@@ -1,0 +1,12 @@
+Experiment of the paper Classification-based Causality Detection in Brain Recordings.
+
+To reproduce the experiments of the paper, follow this pipeline:
+
+create_trainset.py - Calls the function in simulator.py to create a train set of a given shape, i.e. number of causal configurations, trials per configuration and time points.
+
+create_feature_space.py - Computes the feature vector for each trial in a given dataset, it gives as output 3 file in which r2, mse and granger features are saved.
+
+feature_eng_classification_cv.py - Loads the feature vectors that have been computed in the previous step and it enriches the feature vectors by the feature engineering procedure. In case of only one dataset the performance of the supervised approach is quantified by cross-validating the dataset. If two datasets are given and the ground truth of both is known, then the performance is evaluated by considering the predicted causal configuration matrices of the test set. If the ground truth of a dataset is not available then labels can be predicted by applying the classifier trained on the MAR dataset.
+
+curveROC_frontier2016_causality.py - This is just for visualizing the ROC curve and computing the AUC of CBC or MBC applied on a given dataset.   
+
